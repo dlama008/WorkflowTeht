@@ -1,4 +1,8 @@
 name: Build and deploy .NET Core application to Web App WorkflowTeht20240110101501
+on:
+    push:
+        branches:
+        - master
 env:
   AZURE_WEBAPP_NAME: WorkflowTeht20240110101501
   AZURE_WEBAPP_PACKAGE_PATH: .\publish
