@@ -1,4 +1,4 @@
-name: WorkflowTeht20240110101501
+name: Build and deploy .NET Core application to Web App WorkflowTeht20240110101501
 on:
     push:
         branches:
