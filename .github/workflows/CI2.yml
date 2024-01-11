@@ -1,0 +1,28 @@
+name: workflow
+on:
+    pull:
+        branches:
+        - development
+env:
+  AZURE_WEBAPP_NAME: WorkflowTeht20240110101501
+  AZURE_WEBAPP_PACKAGE_PATH: .\publish
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 5.0.x
+  WORKING_DIRECTORY: .
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1.8.0
+      with:
+        include-prerelease: True
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+
+    - name: Restore
+      run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+    - name: Build
+      run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+    - name: Test
+      run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
