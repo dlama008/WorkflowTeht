@@ -1,6 +1,6 @@
 name: workflow
 on:
-    pull:
+    pull_request:
         branches:
         - development
 env:
